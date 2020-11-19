@@ -2,7 +2,7 @@
   <div id="app">
     <h1>Список задач</h1>
     <hr />
-    <TaskList />
+    <TaskList :items="tasks" />
   </div>
 </template>
 
@@ -11,7 +11,16 @@ import TaskList from "@/components/TaskList.vue";
 
 export default {
   name: "App",
-  components: { TaskList }
+  components: { TaskList },
+  data() {
+    return {
+      tasks: [
+        { id: 1, title: "продукты", description: "купить хлеб" },
+        { id: 2, title: "животные", description: "накормить кота" },
+        { id: 3, title: "деловая", description: "написать проект" }
+      ]
+    };
+  }
 };
 </script>
 
