@@ -2,11 +2,12 @@
   <div id="app">
     <h1>Список задач</h1>
     <hr />
-    <TaskList :items="tasks" @remove-task="removeTask" />
+    <TaskList :items="tasks" />
   </div>
 </template>
 
 <script>
+import { bus } from "@/bus.js";
 import TaskList from "@/components/TaskList.vue";
 
 export default {
@@ -36,10 +37,12 @@ export default {
       ]
     };
   },
-  methods: {
-    removeTask(id) {
+
+  created() {
+    bus.$on("remove-task", data => {
+      const id = data;
       this.tasks = this.tasks.filter(t => t.id !== id);
-    }
+    });
   }
 };
 </script>

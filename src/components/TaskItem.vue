@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import { bus } from "@/bus.js";
 export default {
   props: {
     elem: {
@@ -44,8 +45,8 @@ export default {
     },
 
     removeTask(id, stage) {
-      if (stage === "completed") this.$emit("remove-task", id);
-      else console.log("Задача не выполнена!");
+      if (stage === "completed") bus.$emit("remove-task", id);
+      else alert("Задача не выполнена!");
     }
   }
 };

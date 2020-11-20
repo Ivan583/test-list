@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <TaskItem v-for="item in items" :key="item.id" :elem="item" @remove-task="removeTask" />
+    <TaskItem v-for="item in items" :key="item.id" :elem="item" />
   </ul>
 </template>
 
@@ -8,12 +8,7 @@
 import TaskItem from "@/components/TaskItem.vue";
 export default {
   props: ["items"],
-  components: { TaskItem },
-  methods: {
-    removeTask(id) {
-      this.$emit("remove-task", id);
-    }
-  }
+  components: { TaskItem }
 };
 </script>
 
