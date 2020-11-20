@@ -11,3 +11,11 @@ export default {
   components: { TaskItem }
 };
 </script>
+
+<style scoped>
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
