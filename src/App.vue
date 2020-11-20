@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <h1>Список задач</h1>
+    <AddTask @add-task="addTask" />
     <hr />
     <TaskList :items="tasks" />
   </div>
@@ -9,10 +10,11 @@
 <script>
 import { bus } from "@/bus.js";
 import TaskList from "@/components/TaskList.vue";
+import AddTask from "@/components/AddTask.vue";
 
 export default {
   name: "App",
-  components: { TaskList },
+  components: { TaskList, AddTask },
   data() {
     return {
       tasks: [
@@ -36,6 +38,12 @@ export default {
         }
       ]
     };
+  },
+
+  methods: {
+    addTask(elem) {
+      console.log(elem);
+    }
   },
 
   created() {
