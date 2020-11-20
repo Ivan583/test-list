@@ -7,7 +7,7 @@
           <button class="finish">Finish</button>
           <div class="box">
             <span class="index" :class="{work: inProgress(elem), done: isCompleted(elem)}">
-              <strong>{{ elem.id }}</strong>
+              <strong>{{ index + 1 }}</strong>
             </span>
             <span :class="{work: inProgress(elem),  done: isCompleted(elem)}">{{ elem.title }}</span>
           </div>
@@ -33,7 +33,8 @@ export default {
     elem: {
       type: Object,
       required: true
-    }
+    },
+    index: Number
   },
 
   methods: {
@@ -97,6 +98,7 @@ span {
 }
 
 .index {
+  width: 35px;
   margin-right: 0.5rem;
 }
 
