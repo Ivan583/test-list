@@ -17,32 +17,14 @@ export default {
   components: { TaskList, AddTask },
   data() {
     return {
-      tasks: [
-        {
-          id: 1,
-          title: "продукты",
-          description: "купить хлеб",
-          stage: "pending"
-        },
-        {
-          id: 2,
-          title: "животные",
-          description: "накормить кота",
-          stage: "completed"
-        },
-        {
-          id: 3,
-          title: "деловая",
-          description: "написать проект",
-          stage: "in work"
-        }
-      ]
+      tasks: []
     };
   },
 
   methods: {
     addTask(elem) {
       this.tasks.push(elem);
+      localStorage.setItem("tasks", JSON.stringify(this.tasks));
     }
   },
 
@@ -50,7 +32,19 @@ export default {
     bus.$on("remove-task", data => {
       const id = data;
       this.tasks = this.tasks.filter(t => t.id !== id);
+      localStorage.setItem("tasks", JSON.stringify(this.tasks));
     });
+  },
+
+  mounted() {
+    try {
+      const data = localStorage.getItem("tasks");
+      data ? (this.tasks = JSON.parse(data)) : null;
+    } catch {
+      if (err == QUOTA_EXCEEDED_ERR) {
+        alert("quota exceeded");
+      }
+    }
   }
 };
 </script>
