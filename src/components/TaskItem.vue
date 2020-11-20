@@ -6,15 +6,15 @@
           <button class="start">Start</button>
           <button class="finish">Finish</button>
           <div class="box">
-            <span class="index" :class="{work: inProgress(elem)}">
+            <span class="index" :class="{work: inProgress(elem), done: isCompleted(elem)}">
               <strong>{{ elem.id }}</strong>
             </span>
-            <span :class="{work: inProgress(elem)}">{{ elem.title }}</span>
+            <span :class="{work: inProgress(elem),  done: isCompleted(elem)}">{{ elem.title }}</span>
           </div>
         </div>
 
         <div>
-          <span :class="{work: inProgress(elem)}">{{ elem.description }}</span>
+          <span :class="{work: inProgress(elem),  done: isCompleted(elem)}">{{ elem.description }}</span>
         </div>
       </div>
 
@@ -38,6 +38,9 @@ export default {
   methods: {
     inProgress(myStage) {
       return myStage.stage === "in work";
+    },
+    isCompleted(myStage) {
+      return myStage.stage === "completed";
     }
   }
 };
@@ -93,5 +96,10 @@ span {
 
 .work {
   color: green;
+}
+
+.done {
+  color: black;
+  text-decoration: line-through;
 }
 </style>
