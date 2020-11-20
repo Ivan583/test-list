@@ -42,7 +42,7 @@ export default {
 
   methods: {
     addTask(elem) {
-      console.log(elem);
+      this.tasks.push(elem);
     }
   },
 
