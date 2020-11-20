@@ -9,6 +9,7 @@
             <span class="index" :class="{work: inProgress(elem), done: isCompleted(elem)}">
               <strong>{{ index + 1 }}</strong>
             </span>
+            <span :class="{work: inProgress(elem),  done: isCompleted(elem)}">{{ localeDate }}</span>
             <span :class="{work: inProgress(elem),  done: isCompleted(elem)}">{{ elem.title }}</span>
           </div>
         </div>
@@ -48,6 +49,12 @@ export default {
     removeTask(id, stage) {
       if (stage === "completed") bus.$emit("remove-task", id);
       else alert("Задача не выполнена!");
+    }
+  },
+
+  computed: {
+    localeDate() {
+      return new Date().toLocaleString();
     }
   }
 };
