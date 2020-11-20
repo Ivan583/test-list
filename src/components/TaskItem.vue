@@ -20,7 +20,7 @@
 
       <div>
         <button class="edit">Edit</button>
-        <button class="delete">Delete</button>
+        <button class="delete" @click="removeTask(elem.id)">Delete</button>
       </div>
     </div>
   </li>
@@ -41,6 +41,10 @@ export default {
     },
     isCompleted(myStage) {
       return myStage.stage === "completed";
+    },
+
+    removeTask(id) {
+      this.$emit("remove-task", id);
     }
   }
 };

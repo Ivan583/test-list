@@ -2,7 +2,7 @@
   <div id="app">
     <h1>Список задач</h1>
     <hr />
-    <TaskList :items="tasks" />
+    <TaskList :items="tasks" @remove-task="removeTask" />
   </div>
 </template>
 
@@ -35,6 +35,11 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    removeTask(id) {
+      this.tasks = this.tasks.filter(t => t.id !== id);
+    }
   }
 };
 </script>
