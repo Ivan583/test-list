@@ -6,15 +6,15 @@
           <button class="start">Start</button>
           <button class="finish">Finish</button>
           <div class="box">
-            <span class="index">
+            <span class="index" :class="{work: inProgress(elem)}">
               <strong>{{ elem.id }}</strong>
             </span>
-            <span>{{ elem.title }}</span>
+            <span :class="{work: inProgress(elem)}">{{ elem.title }}</span>
           </div>
         </div>
 
         <div>
-          <span>{{ elem.description }}</span>
+          <span :class="{work: inProgress(elem)}">{{ elem.description }}</span>
         </div>
       </div>
 
@@ -32,6 +32,12 @@ export default {
     elem: {
       type: Object,
       required: true
+    }
+  },
+
+  methods: {
+    inProgress(myStage) {
+      return myStage.stage === "in work";
     }
   }
 };
@@ -83,5 +89,9 @@ span {
 
 .index {
   margin-right: 0.5rem;
+}
+
+.work {
+  color: green;
 }
 </style>

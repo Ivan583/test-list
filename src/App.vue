@@ -15,9 +15,24 @@ export default {
   data() {
     return {
       tasks: [
-        { id: 1, title: "продукты", description: "купить хлеб" },
-        { id: 2, title: "животные", description: "накормить кота" },
-        { id: 3, title: "деловая", description: "написать проект" }
+        {
+          id: 1,
+          title: "продукты",
+          description: "купить хлеб",
+          stage: "pending"
+        },
+        {
+          id: 2,
+          title: "животные",
+          description: "накормить кота",
+          stage: "completed"
+        },
+        {
+          id: 3,
+          title: "деловая",
+          description: "написать проект",
+          stage: "in work"
+        }
       ]
     };
   }
