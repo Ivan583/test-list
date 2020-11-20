@@ -29,6 +29,19 @@ export default {
   },
 
   created() {
+    bus.$on("start-task", data => {
+      console.log(data);
+
+      const { id, stage } = data;
+      console.log(id, stage, this.tasks);
+
+      this.tasks = this.tasks.map(el => {
+        el.id === id ? { ...el, stage: "in work" } : el;
+      });
+      console.log(this.tasks);
+      // localStorage.setItem("tasks", JSON.stringify(this.tasks));
+    });
+
     bus.$on("remove-task", data => {
       const id = data;
       this.tasks = this.tasks.filter(t => t.id !== id);
